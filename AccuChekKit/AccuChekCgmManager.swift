@@ -41,8 +41,8 @@ public class AccuChekCgmManager: CGMManager {
     }
     
     public var isInoperable: Bool {
-        // EversenseKit reports connection/sensor state via state.connectionStatus;
-        // we treat anything other than .connected as not-inoperable but stale.
+        // AccuChekKit reports connection state via state.isConnected;
+        // a disconnected sensor is treated as stale, not inoperable.
         false
     }
 
