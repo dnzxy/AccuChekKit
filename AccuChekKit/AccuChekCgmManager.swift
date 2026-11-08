@@ -326,6 +326,10 @@ extension AccuChekCgmManager {
 }
 
 public extension AccuChekCgmManager {
+    static var issuableAlerts: [IssuableAlert] {
+        SensorStatusEnum.allCases.compactMap(\.issuableAlert)
+    }
+
     func acknowledgeAlert(alertIdentifier _: LoopKit.Alert.AlertIdentifier) async throws {}
 
     func getSoundBaseURL() -> URL? {

@@ -66,8 +66,29 @@ public enum SensorStatusEnum: UInt8 {
             identifier: identifier,
             foregroundContent: content,
             backgroundContent: content,
-            trigger: .immediate
+            trigger: .immediate,
+            interruptionLevel: interruptionLevel
         )
+    }
+
+    var issuableAlert: IssuableAlert? {
+        guard let identifier = alertIdentifier, let content = alertContent else {
+            return nil
+        }
+
+        return IssuableAlert(
+            identifier: identifier.alertIdentifier,
+            interruptionLevel: interruptionLevel,
+            title: content.title
+        )
+    }
+
+    private var interruptionLevel: Alert.InterruptionLevel {
+        switch self {
+        case .generalDeviceFaultOccuredInSensor: return .critical
+        case .calibrationRecommended: return .active
+        default: return .timeSensitive
+        }
     }
 
     private var alertContent: Alert.Content? {
