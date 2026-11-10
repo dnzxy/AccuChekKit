@@ -71,12 +71,12 @@ public enum SensorStatusEnum: UInt8 {
         )
     }
 
-    var issuableAlert: IssuableAlert? {
+    var catalogEntry: AlertCatalogEntry? {
         guard let identifier = alertIdentifier, let content = alertContent else {
             return nil
         }
 
-        return IssuableAlert(
+        return AlertCatalogEntry(
             identifier: identifier.alertIdentifier,
             interruptionLevel: interruptionLevel,
             title: content.title

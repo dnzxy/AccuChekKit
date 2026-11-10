@@ -326,8 +326,8 @@ extension AccuChekCgmManager {
 }
 
 public extension AccuChekCgmManager {
-    static var issuableAlerts: [IssuableAlert] {
-        SensorStatusEnum.allCases.compactMap(\.issuableAlert)
+    static var alertCatalog: [AlertCatalogEntry] {
+        SensorStatusEnum.allCases.compactMap(\.catalogEntry)
     }
 
     func acknowledgeAlert(alertIdentifier _: LoopKit.Alert.AlertIdentifier) async throws {}
